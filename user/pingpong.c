@@ -15,13 +15,13 @@ int main(int argc,char*argv[])
   if(pid == 0){
     char received;
     read(to_child[0],&received,1);
-    printf("%d: ping received\n",getpid());
+    printf("%d: received ping\n",getpid());
     write(to_parent[1],"x",1);
   } else {
     write(to_child[1],"b",1);
     char received;
     read(to_parent[0],&received,1);
-    printf("%d: pong received\n",getpid());
+    printf("%d: received pong\n",getpid());
   }
   exit(0);
 }

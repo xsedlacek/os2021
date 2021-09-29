@@ -9,7 +9,7 @@ void child (int read_fd){
   pipe(write_fd);
 
   read(read_fd,&p,sizeof(int));
-  printf("%d\n",p);
+  printf("prime %d\n",p);
   while(read(read_fd,&n,sizeof(int)) == sizeof(int)){
 	if((n % p) != 0){
 	  if(no_child){
@@ -27,7 +27,6 @@ void child (int read_fd){
       }
     }
     close(write_fd[1]);
-   // wait();
   }
 
 int main(){
@@ -46,7 +45,6 @@ int main(){
     write(fds[1],&i,sizeof(int));
   }
   close(fds[1]);
-  //wait(&2);
   }else{
     fprintf(2,"error: fork\n");
   }
