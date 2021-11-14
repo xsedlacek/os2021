@@ -27,9 +27,7 @@ struct kmem cpu_kmem[NCPU];
 
 void
 kinit()
-{
-  initlock(&kmem.lock, "kmem");
-  
+{  
   for (int i = 0; i < NCPU; i++)
     initlock(&cpu_kmem[i].lock, "kmem");
     
